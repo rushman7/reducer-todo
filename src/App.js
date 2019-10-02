@@ -4,10 +4,8 @@ import { initialState, todoReducer } from './reducers/todoReducer';
 function App() {
   const [state, dispatch] = useReducer(todoReducer, initialState);
   const [input, setInput] = useState('');
-  console.log(state);
 
   const handleChange = e => {
-    e.preventDefault();
     setInput(e.target.value)
   }
 
