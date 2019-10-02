@@ -15,11 +15,13 @@ function App() {
     <div className="App">
       <header className="App-header">
         {state.map(todo => 
-          <p 
-            key={todo.id}
-            onClick={() => dispatch({ type: 'TOGGLE_TODO', payload: todo.id})}
-          >{todo.item}
-          </p>
+          <div key={todo.id} onClick={() => dispatch({ type: 'TOGGLE_TODO', payload: todo.id})}>
+            {
+              todo.completed ? 
+              <span style={{ textDecorationLine: 'line-through' }}>{todo.item}</span> : 
+              <span>{todo.item}</span>
+            }
+          </div>
         )}
         <input 
           type="text"
@@ -27,6 +29,7 @@ function App() {
           value={input}
           onChange={handleChange}
         />
+        <button onClick={() => dispatch({ type: 'CLEAR_COMPLETED'})}>Clear Completed</button>
         <button onClick={() => dispatch({ type: 'ADD_TODO', payload: input})}>Add Todo</button>
       </header>
     </div>
