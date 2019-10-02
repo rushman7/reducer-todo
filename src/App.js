@@ -14,7 +14,13 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        {state.todo.map(todo => <p key={todo.id}>{todo.item}</p>)}
+        {state.map(todo => 
+          <p 
+            key={todo.id}
+            onClick={() => dispatch({ type: 'TOGGLE_TODO', payload: todo.id})}
+          >{todo.item}
+          </p>
+        )}
         <input 
           type="text"
           name="addTodo"
